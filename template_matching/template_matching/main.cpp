@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <opencv2\opencv.hpp>
 
 struct position {
@@ -6,36 +7,37 @@ struct position {
 	int y;
 };
 
+void Template_matching(const std::string& img_name, const std::string& template_img_name);
 int SSD(cv::Mat& img, cv::Mat& template_img, const int* x, const int* y);
 void Indicate_Predicted_Position(cv::Mat& img, cv::Mat& template_img, const position& p);
 
 int main() {
 
-	cv::Mat img = cv::imread("lena2.png");
+	Template_matching("lena2.png", "template_img2.png");
+
+	return 0;
+}
+
+void Template_matching(const std::string& img_name, const std::string& template_img_name) {
+	cv::Mat img = cv::imread(img_name);
 	if (img.empty()) {
 		std::cerr << "Can't read img." << std::endl;
 		exit(1);
 	}
 
-	cv::Mat template_img = cv::imread("template_img2.png");
+	cv::Mat template_img = cv::imread(template_img_name);
 	if (template_img.empty()) {
 		std::cerr << "Can't read template_img." << std::endl;
 		exit(1);
 	}
 
-	cv::Mat gray_img = cv::Mat(img.rows, img.cols, CV_8U);
-	cv::Mat gray_template_img = cv::Mat(template_img.rows, template_img.cols, CV_8U);
-
-	cv::cvtColor(img, gray_img, CV_BGR2GRAY);
-	cv::cvtColor(template_img, gray_template_img, CV_BGR2GRAY);
-
 	int min = 100000000;
 	int r = 0;
-	struct position p = {0,0};
-	
+	struct position p = { 0,0 };
+
 	std::cout << "SSD" << std::endl;
-	for (int y = 0; y <= gray_img.rows - gray_template_img.rows; ++y) {
-		for (int x = 0; x <= gray_img.cols - gray_template_img.cols; ++x) {
+	for (int y = 0; y <= img.rows - template_img.rows; ++y) {
+		for (int x = 0; x <= img.cols - template_img.cols; ++x) {
 			r = SSD(img, template_img, &x, &y);
 			if (min > r) {
 				min = r;
@@ -45,23 +47,15 @@ int main() {
 		}
 	}
 
-	std::cout << "r" << r << std::endl;
-	std::cout << p.x << " " << p.y << std::endl;
-
 	std::cout << "Indicate" << std::endl;
 	cv::Mat copy_img;
-	//img.copyTo(copy_img);
 	img.convertTo(copy_img, CV_8U);
 	Indicate_Predicted_Position(copy_img, template_img, p);
-
-	std::cout << img.rows << std::endl;
 
 	cv::imshow("img", img);
 	cv::imshow("template_img", template_img);
 	cv::imshow("matchimg_result", copy_img);
 	cv::waitKey();
-
-	return 0;
 }
 
 int SSD(cv::Mat& img, cv::Mat& template_img, const int* x, const int* y) {

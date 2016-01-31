@@ -1,4 +1,4 @@
-﻿Build started 2016/01/31 15:14:02.
+﻿Build started 2016/01/31 15:39:28.
      1>Project "C:\Users\佑樹\Documents\c++\template_matching\template_matching\template_matching.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IC:\opencv\build\include /Zi /nologo /W3 /WX- /sdl /O2 /Oi /GL /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Release\\" /Fd"x64\Release\vc140.pdb" /Gd /TP /errorReport:prompt main.cpp
@@ -10,13 +10,13 @@
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\佑樹\Documents\c++\template_matching\x64\Release\template_matching.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\opencv\build\x64\vc14\lib opencv_world310.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\佑樹\Documents\c++\template_matching\x64\Release\template_matching.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\佑樹\Documents\c++\template_matching\x64\Release\template_matching.lib" /MACHINE:X64 x64\Release\main.obj
          Generating code
-         1 of 37 functions ( 2.7%) were compiled, the rest were copied from previous compilation.
-           0 functions were new in current compilation
-           0 functions had inline decision re-evaluated but remain unchanged
+         66 of 99 functions (66.7%) were compiled, the rest were copied from previous compilation.
+           65 functions were new in current compilation
+           4 functions had inline decision re-evaluated but remain unchanged
          Finished generating code
          template_matching.vcxproj -> C:\Users\佑樹\Documents\c++\template_matching\x64\Release\template_matching.exe
      1>Done Building Project "C:\Users\佑樹\Documents\c++\template_matching\template_matching\template_matching.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.06
+Time Elapsed 00:00:03.99
